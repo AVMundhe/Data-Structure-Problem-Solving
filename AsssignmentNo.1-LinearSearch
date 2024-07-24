@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+  int A[20];
+  int flag=1;
+  int N,i,j,Target;
+  cout<<"Enter the Size of Your Array: ";
+  cin>>N;
+
+
+for ( i = 0; i < N; i++)
+{
+    cout<<"Enter the "<<i+1<<" Element ";
+    cin>>A[i];
+}
+cout<<"Your Array is:\n";
+for ( i = 0; i < N; i++)
+{
+    cout<<A[i]<<" ";  
+}
+
+
+for ( i = 0; i < N; i++)
+{
+    for ( j = 0; j < N-1; j++)
+    {
+        if (A[j]>A[j+1])
+
+        {int temp;
+          temp=A[j];
+          A[j]=A[j+1];
+          A[j+1]=temp;            
+        }
+        
+    }
+    
+}
+
+
+cout<<"\nYour Sorted Array with its index is:\n";
+for ( i = 0; i < N; i++)
+{
+    cout<<i<<"\t|";  
+}
+cout<<"\n";
+for ( i = 0; i < N; i++)
+{
+    cout<<A[i]<<"\t|";  
+}
+
+
+cout<<"\nEnter the Target you want to search: ";
+cin>>Target;
+
+for ( i = 0; i < N; i++)
+{
+    if (A[i]==Target)
+    {
+        cout<<"Target Found AT "<<i<<" Index";
+        flag=0;
+    }
+    
+}
+if(flag==1)
+{
+    cout<<"Target Not Found";
+}
+
+    return 0;
+}
