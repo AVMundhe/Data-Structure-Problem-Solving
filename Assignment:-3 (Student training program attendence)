@@ -9,6 +9,7 @@ public:
 	string classs;
 	string name;
 	int attended=0;
+    float opinion=0;
 
 	void accept(int x) {
 		cout<<"Student no. "<<x<<endl;
@@ -29,6 +30,16 @@ public:
 		     << setw(15) << left << name << endl;
 	}
 
+    void display2()
+    {
+        	cout << setw(15) << left << classs
+		     << setw(15) << left << roll
+		     << setw(15) << left << name 
+             << setw(15) << left << opinion <<endl;
+    }
+
+    
+
 
 
 
@@ -37,11 +48,14 @@ public:
 int main()
 {	Roll a[20];
 	int i,ch,N=0,temproll,flag,A=0,count=0,tempattended,check=0;
+    int  q1,q2,q3,q4,q5;
+    float total=0;
+    float opi=0;
 	string tempclasss;
 
 	do
 	{
-		cout<<"\nMenu\n1.Accept\n2.Display\n3.Feed\n4.Display Feed\n5.Search(Using Linear Search)\n6.Search(Using Binary Search)\n7.Exit\n";
+		cout<<"\nMenu\n1.Accept\n2.Display\n3.Feed\n4.Display Feed\n5.Search(Using Linear Search)\n6.Search(Using Binary Search)\n7.FeedBack\n8.Display Opinion\n9.Exit\n";
 		cin>>ch;
 
 		switch (ch)
@@ -270,8 +284,84 @@ int main()
 
 			break;
 
+        case 7:
+               for ( i = 0; i < A; i++)
+               {for (  i = 0; i < N; i++)
+				{   
+					if (a[i].attended==1) {
+                        q1=q2=q3=q4=q5=0;
+                        opi=0;
+                        float average=0;
+                        cout<<"Student "<<i+1<<endl;
+                         cout<<"1.Do you uhink Traing Program was worth it?\n";
+                         cout<<"1.Yes\n0.No\n";
+                         cin>>q1;
+                         cout<<"2.Do you think college made proper use of your precious time by inviting the respective Guest?";
+                          cout<<"\n1.Yes\n0.No\n";
+                         cin>>q2;
+                         cout<<"DO you think we were Doing time pass, By calling you at Holiday???";
+                         cout<<"\n1.Yes\n0.No\n";
+                         cin>>q3;
+                         cout<<"Did you get Gyst of Trainer's Lecture Or you were sleeping??\n";
+                         cout<<"(1)Yes\n(0)No\n";
+                         cin>>q4;
+                         cout<<"Shall we force you Again for Such type of programs in future again?\nNOTE:not like your choice matters";
+                         cout<<"\n(1)Yes\n(0)No\n";
+                         cin>>q5;
+                         
+                        
+                        opi=q1+q2+q3+q4+q5;
+                        average=(opi/5)*100;
+                        cout<<average;
+                        a[i].opinion=average;
+						total+=opi;
+                        
 
-		case 7:
+					}
+                    
+				}
+               }
+             
+        break;
+
+        case 8:
+
+        cout<<"\nAttended Students Opinion is:\n";		
+             cout << setw(15) << left << "Class"
+		     << setw(15) << left << "Roll"
+		     << setw(15) << left << "Name" 
+             << setw(15) << left << "Opinion(out of 100)" <<endl;
+
+            for ( i = 0; i < A; i++)
+			{
+		
+				cout << setfill('-') << setw(65) << "" << setfill(' ') << endl;
+
+				for ( i = 0; i < N; i++)
+				{
+					if (a[i].attended==1) {
+
+						a[i].display2();
+					}
+
+				}
+			}
+          
+          if(((total/(A*5))*100) >= 80)
+          {
+            cout<<"Students Are Interested in such Future Programs...\n";
+            cout<<((total/(A*5))*100)<<"was the Percentile";
+          }
+          else{
+            cout<<"Students Not Interested...\n";
+            cout<<((total/(A*5))*100)<<"was the Percentile";
+          }
+        
+
+        break;
+
+
+		case 9:
 			break;
 
 
@@ -282,7 +372,7 @@ int main()
 		}
 
 
-	} while (ch!=7);
+	} while (ch!=9);
 
 
 
